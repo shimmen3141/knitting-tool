@@ -4,29 +4,29 @@ import { Shape } from "react-konva";
 function drawMagicRing(ctx) {
   // マジックリング（円）の形
   ctx.beginPath();
-  ctx.arc(0, 0, 10, 0, Math.PI * 2);
+  ctx.arc(0, 0, 30, 0, Math.PI * 2);
   ctx.closePath();
 }
 
 function drawChain(ctx) {
   // 鎖編み（楕円）の形
   ctx.beginPath();
-  ctx.ellipse(0, 0, 10, 5, 0, 0, Math.PI * 2);
+  ctx.ellipse(0, 0, 5, 10, 0, 0, Math.PI * 2);
   ctx.closePath();
 }
 
 function drawInc(ctx) {
   // 増し目（V字型）の形
-  ctx.moveTo(-10, 10);
-  ctx.lineTo(0, -10);
-  ctx.lineTo(10, 10);
+  ctx.moveTo(-10, -10);
+  ctx.lineTo(0, 10);
+  ctx.lineTo(10, -10);
 }
 
 function drawDec(ctx) {
   // 減目（逆V字型）の形
-  ctx.moveTo(-10, -10);
-  ctx.lineTo(0, 10);
-  ctx.lineTo(10, -10);
+  ctx.moveTo(-10, 10);
+  ctx.lineTo(0, -10);
+  ctx.lineTo(10, 10);
 }
 
 function drawSingle(ctx) {

@@ -3,7 +3,7 @@ import { Stage, Layer, Circle } from "react-konva";
 import StitchShape from "./StitchShape";
 
 const stitches = [
-  { type: "circle", x: 0, y: 0, r: 30, label: "わ" }, // 中心円
+  { type: "magicRing", x: 0, y: 0, r: 30, label: "わ" }, // 中心円
   // 鎖編み（○）
   { type: "chain", x: 0, y: -60 },
   { type: "chain", x: 0, y: -80 },
@@ -13,10 +13,12 @@ const stitches = [
   // 細編み（×）
   { type: "single", x: 30, y: -40 },
   { type: "single", x: -30, y: -40 },
-  { type: "single", x: 60, y: -20 },
-  { type: "single", x: -60, y: -20 },
-  { type: "single", x: 90, y: 10 },
-  { type: "single", x: -90, y: 10 },
+  // 増し目
+  { type: "inc", x: 60, y: -20 },
+  { type: "inc", x: -60, y: -20 },
+  // 減らし目
+  { type: "dec", x: 90, y: 10 },
+  { type: "dec", x: -90, y: 10 },
   // 長編み（T）
   { type: "halfDouble", x: 0, y: 50 },
   { type: "treble", x: 20, y: 70 },
@@ -34,18 +36,18 @@ const CrochetChart = () => {
     <Stage width={500} height={500} offsetX={-250} offsetY={-250}>
       <Layer>
         {stitches.map((stitch, index) => {
-          if (stitch.type === "circle") {
-            return (
-              <Circle
-                key={index}
-                x={stitch.x}
-                y={stitch.y}
-                radius={stitch.r}
-                stroke="black"
-                fill="none"
-              />
-            );
-          }
+          // if (stitch.type === "circle") {
+          //   return (
+          //     <Circle
+          //       key={index}
+          //       x={stitch.x}
+          //       y={stitch.y}
+          //       radius={stitch.r}
+          //       stroke="black"
+          //       fill="none"
+          //     />
+          //   );
+          // }
           return (
             <StitchShape
               key={index}
