@@ -1,6 +1,34 @@
 import React, { useState } from "react";
 import { Shape } from "react-konva";
 
+function drawMagicRing(ctx) {
+  // マジックリング（円）の形
+  ctx.beginPath();
+  ctx.arc(0, 0, 10, 0, Math.PI * 2);
+  ctx.closePath();
+}
+
+function drawChain(ctx) {
+  // 鎖編み（楕円）の形
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 10, 5, 0, 0, Math.PI * 2);
+  ctx.closePath();
+}
+
+function drawInc(ctx) {
+  // 増し目（V字型）の形
+  ctx.moveTo(-10, 10);
+  ctx.lineTo(0, -10);
+  ctx.lineTo(10, 10);
+}
+
+function drawDec(ctx) {
+  // 減目（逆V字型）の形
+  ctx.moveTo(-10, -10);
+  ctx.lineTo(0, 10);
+  ctx.lineTo(10, -10);
+}
+
 function drawSingle(ctx) {
   // 細編み（×）の形
   ctx.moveTo(-10, -10);
@@ -48,7 +76,15 @@ const StitchShape = ({ type, x, y }) => {
       y={y}
       sceneFunc={(ctx, shape) => {
         ctx.beginPath();
-        if (type === "single") {
+        if (type === "magicRing") {
+          drawMagicRing(ctx);
+        } else if (type === "chain") {
+          drawChain(ctx);
+        } else if (type === "inc") {
+          drawInc(ctx);
+        } else if (type === "dec") {
+          drawDec(ctx);
+        } else if (type === "single") {
           drawSingle(ctx);
         } else if (type === "halfDouble") {
           drawHalfDouble(ctx);
