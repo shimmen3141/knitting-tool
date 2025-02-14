@@ -62,12 +62,13 @@ const drawFunctions = {
   },
 };
 
-const StitchShape = ({ type, x, y, index, judgeIsSelected, handleColor }) => {
+const StitchShape = ({ type, x, y, index, rotation, judgeIsSelected, handleColor }) => {
   return (
     <Shape
       key={index}
       x={x}
       y={y}
+      rotation={rotation}
       sceneFunc={(ctx, shape) => {
         ctx.beginPath();
         const drawFunc = drawFunctions[type];

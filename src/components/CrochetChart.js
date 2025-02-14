@@ -3,7 +3,8 @@ import { Stage, Layer } from "react-konva";
 import StitchShape from "./StitchShape";
 
 const stitches = [
-  { type: "magicRing", x: 0, y: 0, r: 30, label: "わ" }, // 中心円
+  // マジックリング（○）
+  { type: "magicRing", x: 0, y: 0, r: 30, label: "わ" },
   // 鎖編み（○）
   { type: "chain", x: 0, y: -60 },
   { type: "chain", x: 0, y: -80 },
@@ -20,12 +21,12 @@ const stitches = [
   { type: "dec", x: 90, y: 10 },
   { type: "dec", x: -90, y: 10 },
   // 長編み（T）
-  { type: "halfDouble", x: 0, y: 50 },
+  { type: "halfDouble", x: 0, y: 50, rotation: 180 },
   { type: "treble", x: 20, y: 70 },
   { type: "treble", x: -20, y: 70 },
   { type: "double", x: 40, y: 90 },
-  { type: "double", x: -40, y: 90 },
-  { type: "double", x: 60, y: 110 },
+  { type: "double", x: -40, y: 90, rotation: 90 },
+  { type: "double", x: 60, y: 110, rotation: -90 },
   { type: "double", x: -60, y: 110 },
   // 引き抜き編み（・）
   { type: "slip", x: 0, y: -160 },
@@ -71,6 +72,7 @@ const CrochetChart = () => {
               type={stitch.type}
               x={stitch.x}
               y={stitch.y}
+              rotation={stitch.rotation || 0}
             />
           );
         })}
