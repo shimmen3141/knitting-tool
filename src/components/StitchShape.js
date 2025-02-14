@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Shape } from "react-konva";
 
 const drawFunctions = {
@@ -62,11 +62,10 @@ const drawFunctions = {
   },
 };
 
-const StitchShape = ({ type, x, y }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
+const StitchShape = ({ type, x, y, index, judgeIsSelected, handleColor }) => {
   return (
     <Shape
+      key={index}
       x={x}
       y={y}
       sceneFunc={(ctx, shape) => {
@@ -79,12 +78,12 @@ const StitchShape = ({ type, x, y }) => {
         }
         ctx.strokeShape(shape);
       }}
-      stroke={isHovered ? "red" : "black"} // カーソルが入ったら色を変える
-      strokeWidth={isHovered ? 2 : 1} // カーソルが入ったら太さを変える
+      // カーソルが入ったら色を変える
+      stroke={judgeIsSelected(index) ? "red" : "black"}
+      // カーソルが入ったら太さを変える
+      strokeWidth={judgeIsSelected(index) ? 2 : 1}
       hitStrokeWidth={10}
-      onClick={() => alert(type)}
-      onMouseEnter={() => setIsHovered(true)} // カーソルが入ったとき
-      onMouseLeave={() => setIsHovered(false)} // カーソルが出たとき
+      onClick={() => handleColor(index)}
     />
   );
 };

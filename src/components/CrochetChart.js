@@ -1,5 +1,5 @@
-import React from "react";
-import { Stage, Layer, Circle } from "react-konva";
+import React, { useState } from "react";
+import { Stage, Layer } from "react-konva";
 import StitchShape from "./StitchShape";
 
 const stitches = [
@@ -32,6 +32,21 @@ const stitches = [
 ];
 
 const CrochetChart = () => {
+  const [shapeSelectedState, setShapeSelectedState] = useState({
+    index: 0,
+    isSelected: false,
+  });
+  const judgeIsSelected = (index) =>
+    shapeSelectedState.index === index && shapeSelectedState.isSelected;
+  const handleColor = (index) => {
+    if (judgeIsSelected(index)) {
+      setShapeSelectedState({ index, isSelected: false });
+      return;
+    }
+    setShapeSelectedState({ index, isSelected: true });
+    return;
+  };
+
   return (
     <Stage width={500} height={500} offsetX={-250} offsetY={-250}>
       <Layer>
@@ -50,7 +65,9 @@ const CrochetChart = () => {
           // }
           return (
             <StitchShape
-              key={index}
+              index={index}
+              judgeIsSelected={judgeIsSelected}
+              handleColor={handleColor}
               type={stitch.type}
               x={stitch.x}
               y={stitch.y}
