@@ -18,9 +18,9 @@ const stitches = [
   { type: "single", x: 90, y: 10 },
   { type: "single", x: -90, y: 10 },
   // 長編み（T）
-  { type: "double", x: 0, y: 50 },
-  { type: "double", x: 20, y: 70 },
-  { type: "double", x: -20, y: 70 },
+  { type: "halfDouble", x: 0, y: 50 },
+  { type: "treble", x: 20, y: 70 },
+  { type: "treble", x: -20, y: 70 },
   { type: "double", x: 40, y: 90 },
   { type: "double", x: -40, y: 90 },
   { type: "double", x: 60, y: 110 },
