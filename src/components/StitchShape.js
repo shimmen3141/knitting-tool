@@ -74,6 +74,8 @@ const StitchShape = ({ type, x, y }) => {
         const drawFunc = drawFunctions[type];
         if (drawFunc) {
           drawFunc(ctx);
+        } else {
+          console.error("Invalid type: ", type);
         }
         ctx.strokeShape(shape);
       }}
