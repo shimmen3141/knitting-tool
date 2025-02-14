@@ -60,9 +60,18 @@ const drawFunctions = {
     ctx.moveTo(-5, 26);
     ctx.lineTo(5, 30);
   },
+  // TODO:slipを追加
 };
 
-const StitchShape = ({ type, x, y, index, rotation, judgeIsSelected, handleColor }) => {
+const StitchShape = ({
+  type,
+  x,
+  y,
+  index,
+  rotation,
+  // judgeIsSelected,
+  handleColor,
+}) => {
   return (
     <Shape
       key={index}
@@ -80,9 +89,11 @@ const StitchShape = ({ type, x, y, index, rotation, judgeIsSelected, handleColor
         ctx.strokeShape(shape);
       }}
       // カーソルが入ったら色を変える
-      stroke={judgeIsSelected(index) ? "red" : "black"}
+      // stroke={judgeIsSelected(index) ? "red" : "black"}
+      stroke={false ? "red" : "black"}
       // カーソルが入ったら太さを変える
-      strokeWidth={judgeIsSelected(index) ? 2 : 1}
+      // strokeWidth={judgeIsSelected(index) ? 2 : 1}
+      strokeWidth={false ? 2 : 1}
       hitStrokeWidth={10}
       onClick={() => handleColor(index)}
     />

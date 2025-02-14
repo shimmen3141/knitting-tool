@@ -66,13 +66,13 @@ const CrochetChart = () => {
           // }
           return (
             <StitchShape
-              index={index}
-              judgeIsSelected={judgeIsSelected}
-              handleColor={handleColor}
               type={stitch.type}
               x={stitch.x}
               y={stitch.y}
               rotation={stitch.rotation || 0}
+              index={index}
+              // judgeIsSelected={judgeIsSelected}
+              handleColor={handleColor}
             />
           );
         })}
