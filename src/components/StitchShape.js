@@ -1,74 +1,69 @@
 import React, { useState } from "react";
 import { Shape } from "react-konva";
 
-function drawMagicRing(ctx) {
+const drawFunctions = {
   // マジックリング（円）の形
-  ctx.beginPath();
-  ctx.arc(0, 0, 30, 0, Math.PI * 2);
-  ctx.closePath();
-}
-
-function drawChain(ctx) {
+  magicRing: (ctx) => {
+    ctx.beginPath();
+    ctx.arc(0, 0, 30, 0, Math.PI * 2);
+    ctx.closePath();
+  },
   // 鎖編み（楕円）の形
-  ctx.beginPath();
-  ctx.ellipse(0, 0, 5, 10, 0, 0, Math.PI * 2);
-  ctx.closePath();
-}
-
-function drawInc(ctx) {
-  // 増し目（V字型）の形
-  ctx.moveTo(-10, -10);
-  ctx.lineTo(0, 10);
-  ctx.lineTo(10, -10);
-}
-
-function drawDec(ctx) {
-  // 減目（逆V字型）の形
-  ctx.moveTo(-10, 10);
-  ctx.lineTo(0, -10);
-  ctx.lineTo(10, 10);
-}
-
-function drawSingle(ctx) {
+  chain: (ctx) => {
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 5, 10, 0, 0, Math.PI * 2);
+    ctx.closePath();
+  },
+  // 増し目（V）の形
+  inc: (ctx) => {
+    ctx.moveTo(-10, -10);
+    ctx.lineTo(0, 10);
+    ctx.lineTo(10, -10);
+  },
+  // 減らし目（逆V）の形
+  dec: (ctx) => {
+    ctx.moveTo(-10, 10);
+    ctx.lineTo(0, -10);
+    ctx.lineTo(10, 10);
+  },
   // 細編み（×）の形
-  ctx.moveTo(-10, -10);
-  ctx.lineTo(10, 10);
-  ctx.moveTo(10, -10);
-  ctx.lineTo(-10, 10);
-}
-
-function drawHalfDouble(ctx) {
+  single: (ctx) => {
+    ctx.moveTo(-10, -10);
+    ctx.lineTo(10, 10);
+    ctx.moveTo(10, -10);
+    ctx.lineTo(-10, 10);
+  },
   // 中長編み（T）の形
-  ctx.moveTo(-10, 0);
-  ctx.lineTo(10, 0);
-  ctx.moveTo(0, 0);
-  ctx.lineTo(0, 30);
-}
-
-function drawDouble(ctx) {
+  halfDouble: (ctx) => {
+    ctx.moveTo(-10, 0);
+    ctx.lineTo(10, 0);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, 30);
+  },
   // 長編み（T に点1つ）の形
-  ctx.moveTo(-10, 0);
-  ctx.lineTo(10, 0);
-  ctx.moveTo(0, 0);
-  ctx.lineTo(0, 40);
-  ctx.moveTo(-5, 18);
-  ctx.lineTo(5, 22);
-}
-
-function drawTreble(ctx) {
+  double: (ctx) => {
+    ctx.moveTo(-10, 0);
+    ctx.lineTo(10, 0);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, 40);
+    ctx.moveTo(-5, 18);
+    ctx.lineTo(5, 22);
+  },
   // 長々編み（T に点2つ）の形
-  ctx.moveTo(-10, 0);
-  ctx.lineTo(10, 0);
-  ctx.moveTo(0, 0);
-  ctx.lineTo(0, 50);
-  ctx.moveTo(-5, 20);
-  ctx.lineTo(5, 24);
-  ctx.moveTo(-5, 26);
-  ctx.lineTo(5, 30);
-}
+  treble: (ctx) => {
+    ctx.moveTo(-10, 0);
+    ctx.lineTo(10, 0);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, 50);
+    ctx.moveTo(-5, 20);
+    ctx.lineTo(5, 24);
+    ctx.moveTo(-5, 26);
+    ctx.lineTo(5, 30);
+  },
+};
 
 const StitchShape = ({ type, x, y }) => {
-    const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <Shape
@@ -76,22 +71,9 @@ const StitchShape = ({ type, x, y }) => {
       y={y}
       sceneFunc={(ctx, shape) => {
         ctx.beginPath();
-        if (type === "magicRing") {
-          drawMagicRing(ctx);
-        } else if (type === "chain") {
-          drawChain(ctx);
-        } else if (type === "inc") {
-          drawInc(ctx);
-        } else if (type === "dec") {
-          drawDec(ctx);
-        } else if (type === "single") {
-          drawSingle(ctx);
-        } else if (type === "halfDouble") {
-          drawHalfDouble(ctx);
-        } else if (type === "double") {
-          drawDouble(ctx);
-        } else if (type === "treble") {
-          drawTreble(ctx);
+        const drawFunc = drawFunctions[type];
+        if (drawFunc) {
+          drawFunc(ctx);
         }
         ctx.strokeShape(shape);
       }}
