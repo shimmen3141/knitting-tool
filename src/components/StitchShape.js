@@ -62,13 +62,14 @@ const drawFunctions = {
   },
 };
 
-const StitchShape = ({ type, x, y }) => {
+const StitchShape = ({ type, x, y, rotation }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <Shape
       x={x}
       y={y}
+      rotation={rotation}
       sceneFunc={(ctx, shape) => {
         ctx.beginPath();
         const drawFunc = drawFunctions[type];
