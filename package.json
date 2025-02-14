@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
+    "fabric": "^6.6.0",
+    "fabricjs-react": "^2.1.0",
     "konva": "^9.3.18",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
