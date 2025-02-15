@@ -27,31 +27,31 @@ export const processRounds = (rounds: Stitch[][]) => {
     }))
     .map((stitch) => ({
       ...stitch,
-      x: (30 + MARGIN) * Math.cos(((stitch.rotation! + 90) * Math.PI) / 180),
-      y: (30 + MARGIN) * Math.sin(((stitch.rotation! + 90) * Math.PI) / 180),
+      x: (30 + MARGIN) * Math.cos(((stitch.rotation + 90) * Math.PI) / 180),
+      y: (30 + MARGIN) * Math.sin(((stitch.rotation + 90) * Math.PI) / 180),
     }));
 
   // 2回目以降の round を順次処理
   for (let i = 2; i < rounds.length; i++) {
     // 前の round の処理済みデータ
-    const prevRound = processedRounds[i - 1];
+    const prevRound: Stitch[] = processedRounds[i - 1];
     // 現在の round を処理
     processedRounds[i] = rounds[i].map((stitch) => {
       const sourceIndex = (stitch.relativeTo || stitch.index) ?? 0;
-      const prevStitch = prevRound[sourceIndex];
+      const prevStitch: Stitch = prevRound[sourceIndex];
 
       return {
         ...stitch,
         height: typeToHeight[stitch.type] || 0,
         rotation: prevStitch.rotation,
         x:
-          prevStitch.x! +
-          (prevStitch.height! + MARGIN) *
-            Math.cos(((prevStitch.rotation! + 90) * Math.PI) / 180),
+          (prevStitch.x ?? 0) +
+          ((prevStitch.height ?? 0) + MARGIN) *
+            Math.cos((((prevStitch.rotation ?? 0) + 90) * Math.PI) / 180),
         y:
-          prevStitch.y! +
-          (prevStitch.height! + MARGIN) *
-            Math.sin(((prevStitch.rotation! + 90) * Math.PI) / 180),
+          (prevStitch.y ?? 0) +
+          ((prevStitch.height ?? 0) + MARGIN) *
+            Math.sin((((prevStitch.rotation ?? 0) + 90) * Math.PI) / 180),
       };
     });
   }
