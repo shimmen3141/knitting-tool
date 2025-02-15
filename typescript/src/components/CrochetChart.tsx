@@ -36,7 +36,7 @@ const stitches: {
   { type: "double", x: 60, y: 110, rotation: -90 },
   { type: "double", x: -60, y: 110 },
   // 引き抜き編み（・）
-  { type: "slip", x: 0, y: -160 },
+  // { type: "slip", x: 0, y: -160 },
 ];
 
 const CrochetChart = () => {
