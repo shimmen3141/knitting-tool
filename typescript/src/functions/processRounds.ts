@@ -6,7 +6,9 @@ export const processRounds = (rounds: Stitch[][]) => {
   const MAGIC_RING_RADIUS = typeToHeight["magicRing"];
 
   // 最初の要素のtypeが"magicRing"であるかをチェック
-  if (rounds[0][0].type !== "magicRing") {
+  if (rounds[0][0].type === "magicRing") {
+    rounds[0][0] = { ...rounds[0][0], x: 0, y: 0 };
+  } else {
     console.error(
       'The first element of the first round must be of type "magicRing".'
     );
