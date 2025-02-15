@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Stage, Layer } from "react-konva";
 import StitchShape from "./StitchShape";
 import { Stitch } from "./Stitch.types";
+import { processRounds } from "../functions/processRounds";
 
 // ハートメモ
 // 1．輪の作り目で編む
@@ -45,6 +46,44 @@ import { Stitch } from "./Stitch.types";
 //   // 引き抜き編み（・）
 //   { type: "slip", x: 0, y: -160 },
 // ];
+
+const unprocessedStitches: Stitch[][] = [
+  [{ type: "magicRing", index: 0, x: 0, y: 0 }],
+  [
+    { type: "chain", index: 0 },
+    { type: "double", index: 1 },
+    { type: "double", index: 2 },
+    { type: "double", index: 3 },
+    { type: "double", index: 4 },
+    { type: "halfDouble", index: 5 },
+    { type: "halfDouble", index: 6 },
+    { type: "halfDouble", index: 7 },
+    { type: "double", index: 8 },
+    { type: "halfDouble", index: 9 },
+    { type: "halfDouble", index: 10 },
+    { type: "halfDouble", index: 11 },
+    { type: "double", index: 12 },
+    { type: "double", index: 13 },
+  ],
+  [
+    { type: "inc", index: 0 },
+    { type: "inc", index: 1 },
+    { type: "inc", index: 2 },
+    { type: "inc", index: 3 },
+    { type: "inc", index: 4 },
+    { type: "inc", index: 5 },
+    { type: "inc", index: 6 },
+    { type: "inc", index: 7 },
+    { type: "inc", index: 8 },
+    { type: "inc", index: 9 },
+    { type: "inc", index: 10 },
+    { type: "inc", index: 11 },
+    { type: "inc", index: 12 },
+    { type: "inc", index: 13 },
+  ],
+];
+
+const processedStitches = processRounds(unprocessedStitches);
 
 const stitches: Stitch[] = [
   // マジックリング（○）
@@ -95,31 +134,20 @@ const CrochetChart = () => {
   return (
     <Stage width={500} height={500} offsetX={-250} offsetY={250} scaleY={-1}>
       <Layer>
-        {stitches.map((stitch, index) => {
-          // if (stitch.type === "circle") {
-          //   return (
-          //     <Circle
-          //       key={index}
-          //       x={stitch.x}
-          //       y={stitch.y}
-          //       radius={stitch.r}
-          //       stroke="black"
-          //       fill="none"
-          //     />
-          //   );
-          // }
-          return (
+        {processedStitches.map((round, roundIndex) =>
+          round.map((stitch, stitchIndex) => (
             <StitchShape
+              key={`${roundIndex}-${stitchIndex}`}
               type={stitch.type}
               x={stitch.x}
               y={stitch.y}
               rotation={stitch.rotation || 0}
-              index={index}
+              index={roundIndex * 1000 + stitchIndex} // ユニークなindexを生成
               judgeIsSelected={judgeIsSelected}
               handleColor={handleColor}
             />
-          );
-        })}
+          ))
+        )}
       </Layer>
     </Stage>
   );
