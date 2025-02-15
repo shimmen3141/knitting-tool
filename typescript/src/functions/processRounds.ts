@@ -10,9 +10,10 @@ export const processRounds = (rounds: Stitch[][]) => {
       'The first element of the first round must be of type "magicRing".'
     );
   }
-  
+
   // 処理後の rounds を格納する配列
   const processedRounds: Stitch[][] = [];
+  // magicRingを格納
   processedRounds[0] = rounds[0];
 
   const rotation = getRotation(rounds[1]);
@@ -29,8 +30,6 @@ export const processRounds = (rounds: Stitch[][]) => {
       x: (30 + MARGIN) * Math.cos(((stitch.rotation! + 90) * Math.PI) / 180),
       y: (30 + MARGIN) * Math.sin(((stitch.rotation! + 90) * Math.PI) / 180),
     }));
-
-  console.log(processedRounds[1]);
 
   // 2回目以降の round を順次処理
   for (let i = 2; i < rounds.length; i++) {
