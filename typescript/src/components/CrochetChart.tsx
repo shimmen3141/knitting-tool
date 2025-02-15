@@ -73,13 +73,14 @@ const unprocessedStitches: Stitch[][] = [
     { type: "inc", index: 4 },
     { type: "inc", index: 5 },
     { type: "inc", index: 6 },
-    { type: "inc", index: 7 },
-    { type: "inc", index: 8 },
+    { type: "double", index: 7 },
+    { type: "double", index: 8, relativeTo: 7 },
     { type: "inc", index: 9 },
     { type: "inc", index: 10 },
     { type: "inc", index: 11 },
     { type: "inc", index: 12 },
     { type: "inc", index: 13 },
+    { type: "inc", index: 14 },
   ],
 ];
 
