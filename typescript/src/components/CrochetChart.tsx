@@ -7,28 +7,28 @@ const stitches: Stitch[] = [
   // マジックリング（○）
   { type: "magicRing", x: 0, y: 0, r: 30, label: "わ" },
   // 鎖編み（○）
-  { type: "chain", x: 0, y: -60 },
-  { type: "chain", x: 0, y: -80 },
-  { type: "chain", x: 0, y: -100 },
-  { type: "chain", x: 0, y: -120 },
-  { type: "chain", x: 0, y: -140 },
+  { type: "chain", x: 0, y: 30 },
+  { type: "chain", x: 0, y: 50 },
+  { type: "chain", x: 0, y: 70 },
+  { type: "chain", x: 0, y: 90 },
+  { type: "chain", x: 0, y: 110 },
   // 細編み（×）
-  { type: "single", x: 30, y: -40 },
-  { type: "single", x: -30, y: -40 },
+  { type: "single", x: 90 / 1.414, y: -90 / 1.414, rotation: -135 },
+  { type: "single", x: -90 / 1.414, y: -90 / 1.414, rotation: 135 },
   // 増し目
-  { type: "inc", x: 60, y: -20 },
-  { type: "inc", x: -60, y: -20 },
+  { type: "inc", x: 80 / 1.414, y: 80 / 1.414, rotation: -45 },
+  { type: "inc", x: -80 / 1.414, y: 80 / 1.414, rotation: 45 },
   // 減らし目
-  { type: "dec", x: 90, y: 10 },
-  { type: "dec", x: -90, y: 10 },
+  { type: "dec", x: 80, y: 0, rotation: -90 },
+  { type: "dec", x: -80, y: 0, rotation: 90 },
   // 長編み（T）
-  { type: "halfDouble", x: 0, y: 50, rotation: 180 },
-  { type: "treble", x: 20, y: 70 },
-  { type: "treble", x: -20, y: 70 },
-  { type: "double", x: 40, y: 90 },
-  { type: "double", x: -40, y: 90, rotation: 90 },
-  { type: "double", x: 60, y: 110, rotation: -90 },
-  { type: "double", x: -60, y: 110 },
+  { type: "halfDouble", x: 0, y: -30, rotation: 180 },
+  { type: "treble", x: 30 / 1.414, y: -30 / 1.414, rotation: -135 },
+  { type: "treble", x: -30 / 1.414, y: -30 / 1.414, rotation: 135 },
+  { type: "double", x: 30 / 1.414, y: 30 / 1.414, rotation: -45 },
+  { type: "double", x: -30, y: 0, rotation: 90 },
+  { type: "double", x: 30, y: 0, rotation: -90 },
+  { type: "double", x: -30 / 1.414, y: 30 / 1.414, rotation: 45 },
   // 引き抜き編み（・）
   // { type: "slip", x: 0, y: -160 },
 ];
