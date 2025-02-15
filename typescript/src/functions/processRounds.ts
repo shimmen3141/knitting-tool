@@ -1,5 +1,6 @@
 import { Stitch } from "../components/Stitch.types";
 import { getRotation } from "./getRotation";
+import { addRelations } from "./addRelations";
 
 export const processRounds = (rounds: Stitch[][]) => {
   const MARGIN = 5;
@@ -13,6 +14,11 @@ export const processRounds = (rounds: Stitch[][]) => {
       'The first element of the first round must be of type "magicRing".'
     );
   }
+
+  // relativeToを追加
+  rounds = addRelations(rounds);
+
+  console.log("rounds", rounds);
 
   // 処理後の rounds を格納する配列
   const processedRounds: Stitch[][] = [];
