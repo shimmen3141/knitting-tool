@@ -11,9 +11,12 @@ const drawFunctions = {
   },
   // 鎖編み（楕円）の形
   chain: (ctx: Konva.Context) => {
+    ctx.save();
+    ctx.translate(0, 10);
     ctx.beginPath();
     ctx.ellipse(0, 0, 5, 10, 0, 0, Math.PI * 2);
     ctx.closePath();
+    ctx.restore();
   },
   // 増し目（V）の形
   inc: (ctx: Konva.Context) => {
