@@ -1,7 +1,50 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Stage, Layer } from "react-konva";
 import StitchShape from "./StitchShape";
 import { Stitch } from "./Stitch.types";
+
+// ハートメモ
+// 1．輪の作り目で編む
+// 輪の作り目 を作る
+// 立ち上がり（鎖編み3目）を編む
+// 長編み を2目編む
+// 中長編み を3目編む
+// 長編み を1目編む（ここにマーカーをつける）
+// 中長編み を3目編む
+// 長編み を3目、さらに2目編む
+// 鎖編み3目 → 引き抜き編み で輪を引き締める
+// 2．細編みで増し目をする
+// 立ち上がり1目 を編む
+// すべての目に 細編みを2目ずつ 編む
+// マーカーを付けた目だけ 長編みを2目 編む（ハートのとんがり部分）
+// 引き抜き編み で2段目を完成させる
+
+// const stitches: Stitch[] = [
+//   // マジックリング（○）
+//   { type: "magicRing", x: 0, y: 0, r: 30, label: "わ" },
+//   // 鎖編み（○）
+//   { type: "chain", x: 0, y: 30 },
+//   { type: "chain", x: 0, y: 50 },
+//   { type: "chain", x: 0, y: 70 },
+//   { type: "double", x: -30, y: 0, rotation: 90 },
+//   { type: "double", x: 30, y: 0, rotation: -90 },
+//   { type: "halfDouble", x: 0, y: -30, rotation: 180 },
+//   { type: "halfDouble", x: 0, y: -30, rotation: 180 },
+//   { type: "halfDouble", x: 0, y: -30, rotation: 180 },
+//   { type: "double", x: 30 / 1.414, y: 30 / 1.414, rotation: -45 },
+//   { type: "double", x: 30 / 1.414, y: 30 / 1.414, rotation: -45 },
+//   { type: "double", x: 30 / 1.414, y: 30 / 1.414, rotation: -45 },
+//   { type: "double", x: 30 / 1.414, y: 30 / 1.414, rotation: -45 },
+//   { type: "double", x: 30 / 1.414, y: 30 / 1.414, rotation: -45 },
+//   { type: "chain", x: 0, y: 30 },
+//   { type: "chain", x: 0, y: 50 },
+//   { type: "chain", x: 0, y: 70 },
+
+//   { type: "single", x: 90 / 1.414, y: -90 / 1.414, rotation: -135 },
+//   { type: "single", x: -90 / 1.414, y: -90 / 1.414, rotation: 135 },
+//   // 引き抜き編み（・）
+//   { type: "slip", x: 0, y: -160 },
+// ];
 
 const stitches: Stitch[] = [
   // マジックリング（○）
