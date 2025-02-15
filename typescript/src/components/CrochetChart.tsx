@@ -50,7 +50,7 @@ const CrochetChart = () => {
   };
 
   return (
-    <Stage width={500} height={500} offsetX={-250} offsetY={-250}>
+    <Stage width={500} height={500} offsetX={-250} offsetY={250} scaleY={-1}>
       <Layer>
         {stitches.map((stitch, index) => {
           // if (stitch.type === "circle") {
