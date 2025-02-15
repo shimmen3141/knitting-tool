@@ -1,7 +1,7 @@
 import { Stitch } from "../components/Stitch.types";
 import { getRotation } from "./getRotation";
 
-export const  processRounds = (rounds: Stitch[][]) => {
+export const processRounds = (rounds: Stitch[][]) => {
   const MARGIN = 5;
   // 処理後の rounds を格納する配列
   const processedRounds: Stitch[][] = [];
@@ -48,7 +48,7 @@ export const  processRounds = (rounds: Stitch[][]) => {
       };
     });
   }
-  return processedRounds.flat();;
+  return processedRounds;
 };
 
 const typeToHeight: Record<string, number> = {

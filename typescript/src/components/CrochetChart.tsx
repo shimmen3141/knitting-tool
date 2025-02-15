@@ -144,19 +144,20 @@ const CrochetChart = () => {
   return (
     <Stage width={500} height={500} offsetX={-250} offsetY={250} scaleY={-1}>
       <Layer>
-        {proccesedStitches.map((stitch, index) => {
-          return (
+        {proccesedStitches.map((round, roundIndex) =>
+          round.map((stitch, stitchIndex) => (
             <StitchShape
+              key={`${roundIndex}-${stitchIndex}`}
               type={stitch.type}
               x={stitch.x}
               y={stitch.y}
               rotation={stitch.rotation || 0}
-              index={index}
+              index={roundIndex * 1000 + stitchIndex} // ユニークなindexを生成
               judgeIsSelected={judgeIsSelected}
               handleColor={handleColor}
             />
-          );
-        })}
+          ))
+        )}
       </Layer>
     </Stage>
   );
