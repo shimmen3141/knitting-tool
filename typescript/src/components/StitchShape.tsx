@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Shape } from "react-konva";
 import Konva from "konva";
+import { Shape } from "react-konva";
+import { StitchShapeProps } from "./Stitch.types";
 
 const drawFunctions = {
   // マジックリング（円）の形
@@ -61,40 +61,33 @@ const drawFunctions = {
     ctx.moveTo(-5, 26);
     ctx.lineTo(5, 30);
   },
-};
-
-type StitchShapeProps = {
-  type: keyof typeof drawFunctions;
-  x: number;
-  y: number;
-  rotation: number;
+  // TODO:slipを追加
 };
 
 const StitchShape = (props: StitchShapeProps) => {
-  const { type, x, y, rotation } = props;
-  const [isHovered, setIsHovered] = useState(false);
-
+  const { type, x, y, rotation, index, judgeIsSelected, handleColor } = props;
   return (
     <Shape
+      key={index}
       x={x}
       y={y}
       rotation={rotation}
-      sceneFunc={(ctx: Konva.Context, shape: Konva.Shape) => {
+      sceneFunc={(ctx, shape) => {
         ctx.beginPath();
-        if (type in drawFunctions) {
-          const drawFunc = drawFunctions[type];
+        const drawFunc = drawFunctions[type];
+        if (drawFunc) {
           drawFunc(ctx);
         } else {
           console.error("Invalid type: ", type);
         }
         ctx.strokeShape(shape);
       }}
-      stroke={isHovered ? "red" : "black"} // カーソルが入ったら色を変える
-      strokeWidth={isHovered ? 2 : 1} // カーソルが入ったら太さを変える
+      // カーソルが入ったら色を変える
+      stroke={judgeIsSelected(index) ? "red" : "black"}
+      // カーソルが入ったら太さを変える
+      strokeWidth={judgeIsSelected(index) ? 2 : 1}
       hitStrokeWidth={10}
-      onClick={() => alert(type)}
-      onMouseEnter={() => setIsHovered(true)} // カーソルが入ったとき
-      onMouseLeave={() => setIsHovered(false)} // カーソルが出たとき
+      onClick={() => handleColor(index)}
     />
   );
 };

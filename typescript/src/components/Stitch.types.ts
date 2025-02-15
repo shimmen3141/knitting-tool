@@ -7,7 +7,7 @@ export const STITCH_TYPE_KEYS = [
   "halfDouble",
   "double",
   "treble",
-];
+] as const;
 
 export type Stitch = {
   type: (typeof STITCH_TYPE_KEYS)[number];
@@ -16,4 +16,14 @@ export type Stitch = {
   r?: number;
   label?: string;
   rotation?: number;
+};
+
+export type StitchShapeProps = {
+  type: Stitch["type"];
+  x: Stitch["x"];
+  y: Stitch["y"];
+  rotation?: Stitch["rotation"];
+  index: number;
+  judgeIsSelected: (index: number) => boolean;
+  handleColor: (index: number) => void;
 };

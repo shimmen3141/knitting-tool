@@ -1,15 +1,9 @@
+import  { useState } from "react";
 import { Stage, Layer } from "react-konva";
 import StitchShape from "./StitchShape";
-import { STITCH_TYPE_KEYS } from "./Stitch.types";
+import { Stitch } from "./Stitch.types";
 
-const stitches: {
-  type: string;
-  x: number;
-  y: number;
-  r?: number;
-  label?: string;
-  rotation?: number;
-}[] = [
+const stitches: Stitch[] = [
   // マジックリング（○）
   { type: "magicRing", x: 0, y: 0, r: 30, label: "わ" },
   // 鎖編み（○）
@@ -40,6 +34,21 @@ const stitches: {
 ];
 
 const CrochetChart = () => {
+  const [shapeSelectedState, setShapeSelectedState] = useState({
+    index: 0,
+    isSelected: false,
+  });
+  const judgeIsSelected = (index: number) =>
+    shapeSelectedState.index === index && shapeSelectedState.isSelected;
+  const handleColor = (index: number) => {
+    if (judgeIsSelected(index)) {
+      setShapeSelectedState({ index, isSelected: false });
+      return;
+    }
+    setShapeSelectedState({ index, isSelected: true });
+    return;
+  };
+
   return (
     <Stage width={500} height={500} offsetX={-250} offsetY={-250}>
       <Layer>
@@ -56,28 +65,17 @@ const CrochetChart = () => {
           //     />
           //   );
           // }
-          if (
-            stitch.type === "magicRing" ||
-            stitch.type === "chain" ||
-            stitch.type === "inc" ||
-            stitch.type === "dec" ||
-            stitch.type === "single" ||
-            stitch.type === "halfDouble" ||
-            stitch.type === "double" ||
-            stitch.type === "treble"
-          ) {
-            return (
-              <StitchShape
-                key={index}
-                type={stitch.type}
-                x={stitch.x}
-                y={stitch.y}
-                rotation={stitch.rotation || 0}
-              />
-            );
-          }
-          throw new Error("Invalid stitch type");
-          return null;
+          return (
+            <StitchShape
+              type={stitch.type}
+              x={stitch.x}
+              y={stitch.y}
+              rotation={stitch.rotation || 0}
+              index={index}
+              judgeIsSelected={judgeIsSelected}
+              handleColor={handleColor}
+            />
+          );
         })}
       </Layer>
     </Stage>
