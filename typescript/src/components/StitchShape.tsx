@@ -17,49 +17,49 @@ const drawFunctions = {
   },
   // 増し目（V）の形
   inc: (ctx: Konva.Context) => {
-    ctx.moveTo(-10, -10);
-    ctx.lineTo(0, 10);
-    ctx.lineTo(10, -10);
+    ctx.moveTo(-10, 20);
+    ctx.lineTo(0, 0);
+    ctx.lineTo(10, 20);
   },
   // 減らし目（逆V）の形
   dec: (ctx: Konva.Context) => {
-    ctx.moveTo(-10, 10);
-    ctx.lineTo(0, -10);
-    ctx.lineTo(10, 10);
+    ctx.moveTo(-10, 0);
+    ctx.lineTo(0, 20);
+    ctx.lineTo(10, 0);
   },
   // 細編み（×）の形
   single: (ctx: Konva.Context) => {
-    ctx.moveTo(-10, -10);
-    ctx.lineTo(10, 10);
-    ctx.moveTo(10, -10);
-    ctx.lineTo(-10, 10);
+    ctx.moveTo(10, 0);
+    ctx.lineTo(-10, 20);
+    ctx.moveTo(-10, 0);
+    ctx.lineTo(10, 20);
   },
   // 中長編み（T）の形
   halfDouble: (ctx: Konva.Context) => {
-    ctx.moveTo(-10, 0);
-    ctx.lineTo(10, 0);
     ctx.moveTo(0, 0);
     ctx.lineTo(0, 30);
+    ctx.moveTo(-10, 30);
+    ctx.lineTo(10, 30);
   },
   // 長編み（T に点1つ）の形
   double: (ctx: Konva.Context) => {
-    ctx.moveTo(-10, 0);
-    ctx.lineTo(10, 0);
     ctx.moveTo(0, 0);
     ctx.lineTo(0, 40);
-    ctx.moveTo(-5, 18);
-    ctx.lineTo(5, 22);
+    ctx.moveTo(-10, 40);
+    ctx.lineTo(10, 40);
+    ctx.moveTo(-5, 22);
+    ctx.lineTo(5, 18);
   },
   // 長々編み（T に点2つ）の形
   treble: (ctx: Konva.Context) => {
-    ctx.moveTo(-10, 0);
-    ctx.lineTo(10, 0);
     ctx.moveTo(0, 0);
     ctx.lineTo(0, 50);
-    ctx.moveTo(-5, 20);
-    ctx.lineTo(5, 24);
-    ctx.moveTo(-5, 26);
-    ctx.lineTo(5, 30);
+    ctx.moveTo(-10, 50);
+    ctx.lineTo(10, 50);
+    ctx.moveTo(-5, 24);
+    ctx.lineTo(5, 20);
+    ctx.moveTo(-5, 30);
+    ctx.lineTo(5, 26);
   },
   // TODO:slipを追加
 };
