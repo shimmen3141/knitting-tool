@@ -3,6 +3,7 @@ import { getRotation } from "./getRotation";
 
 export const processRounds = (rounds: Stitch[][]) => {
   const MARGIN = 5;
+  const MAGIC_RING_RADIUS = typeToHeight["magicRing"];
 
   // 最初の要素のtypeが"magicRing"であるかをチェック
   if (rounds[0][0].type !== "magicRing") {
@@ -27,8 +28,12 @@ export const processRounds = (rounds: Stitch[][]) => {
     }))
     .map((stitch) => ({
       ...stitch,
-      x: (30 + MARGIN) * Math.cos(((stitch.rotation + 90) * Math.PI) / 180),
-      y: (30 + MARGIN) * Math.sin(((stitch.rotation + 90) * Math.PI) / 180),
+      x:
+        (MAGIC_RING_RADIUS + MARGIN) *
+        Math.cos(((stitch.rotation + 90) * Math.PI) / 180),
+      y:
+        (MAGIC_RING_RADIUS + MARGIN) *
+        Math.sin(((stitch.rotation + 90) * Math.PI) / 180),
     }));
 
   // 2回目以降の round を順次処理
