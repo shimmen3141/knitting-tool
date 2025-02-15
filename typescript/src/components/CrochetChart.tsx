@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Stage, Layer } from "react-konva";
 import StitchShape from "./StitchShape";
 import { Stitch } from "./Stitch.types";
+import { getRotation } from "../functions/getRotation";
 
 // ハートメモ
 // 1．輪の作り目で編む
@@ -89,6 +90,10 @@ const unprocessedStitches: Stitch[][] = [
     { type: "inc", index: 17 },
   ],
 ];
+
+const rotation = getRotation(unprocessedStitches[1]);
+
+console.log(rotation);
 
 const stitches: Stitch[] = [
   // マジックリング（○）

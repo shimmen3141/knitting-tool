@@ -18,6 +18,7 @@ export type Stitch = {
   r?: number;
   label?: string;
   rotation?: number;
+  height?: number;
 };
 
 export type StitchShapeProps = {
