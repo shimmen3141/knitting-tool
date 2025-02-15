@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Stage, Layer } from "react-konva";
 import StitchShape from "./StitchShape";
 import { Stitch } from "./Stitch.types";
-import { getRotation } from "../functions/getRotation";
+import { processRounds } from "../functions/processRounds";
 
 // ハートメモ
 // 1．輪の作り目で編む
@@ -48,11 +48,11 @@ import { getRotation } from "../functions/getRotation";
 // ];
 
 const unprocessedStitches: Stitch[][] = [
-  [{ type: "magicRing", index: 0 }],
+  [{ type: "magicRing", index: 0, x: 0, y: 0 }],
   [
     { type: "chain", index: 0 },
-    { type: "chain", index: 1 },
-    { type: "chain", index: 2 },
+    { type: "double", index: 1 },
+    { type: "double", index: 2 },
     { type: "double", index: 3 },
     { type: "double", index: 4 },
     { type: "halfDouble", index: 5 },
@@ -64,10 +64,10 @@ const unprocessedStitches: Stitch[][] = [
     { type: "halfDouble", index: 11 },
     { type: "double", index: 12 },
     { type: "double", index: 13 },
-    { type: "chain", index: 14 },
-    { type: "chain", index: 15 },
-    { type: "chain", index: 16 },
-    { type: "slip", index: 17 },
+    // { type: "chain", index: 14 },
+    // { type: "chain", index: 15 },
+    // { type: "chain", index: 16 },
+    // { type: "slip", index: 17 },
   ],
   [
     { type: "inc", index: 0 },
@@ -84,16 +84,16 @@ const unprocessedStitches: Stitch[][] = [
     { type: "inc", index: 11 },
     { type: "inc", index: 12 },
     { type: "inc", index: 13 },
-    { type: "inc", index: 14 },
-    { type: "inc", index: 15 },
-    { type: "inc", index: 16 },
-    { type: "inc", index: 17 },
+    // { type: "inc", index: 14 },
+    // { type: "inc", index: 15 },
+    // { type: "inc", index: 16 },
+    // { type: "inc", index: 17 },
   ],
 ];
 
-const rotation = getRotation(unprocessedStitches[1]);
+const proccesedStitches = processRounds(unprocessedStitches);
 
-console.log(rotation);
+console.log(proccesedStitches);
 
 const stitches: Stitch[] = [
   // マジックリング（○）
@@ -144,19 +144,7 @@ const CrochetChart = () => {
   return (
     <Stage width={500} height={500} offsetX={-250} offsetY={250} scaleY={-1}>
       <Layer>
-        {stitches.map((stitch, index) => {
-          // if (stitch.type === "circle") {
-          //   return (
-          //     <Circle
-          //       key={index}
-          //       x={stitch.x}
-          //       y={stitch.y}
-          //       radius={stitch.r}
-          //       stroke="black"
-          //       fill="none"
-          //     />
-          //   );
-          // }
+        {proccesedStitches.map((stitch, index) => {
           return (
             <StitchShape
               type={stitch.type}
