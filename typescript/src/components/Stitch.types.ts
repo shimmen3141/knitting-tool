@@ -19,6 +19,10 @@ export type Stitch = {
   rotation?: number;
 };
 
+export type GroupedStitch = Stitch & {
+  count?: number;
+};
+
 export type StitchShapeProps = {
   type: Stitch["type"];
   x: Stitch["x"];
