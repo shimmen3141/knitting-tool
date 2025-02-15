@@ -46,6 +46,50 @@ import { Stitch } from "./Stitch.types";
 //   { type: "slip", x: 0, y: -160 },
 // ];
 
+const unprocessedStitches: Stitch[][] = [
+  [{ type: "magicRing", index: 0 }],
+  [
+    { type: "chain", index: 0 },
+    { type: "chain", index: 1 },
+    { type: "chain", index: 2 },
+    { type: "double", index: 3 },
+    { type: "double", index: 4 },
+    { type: "halfDouble", index: 5 },
+    { type: "halfDouble", index: 6 },
+    { type: "halfDouble", index: 7 },
+    { type: "double", index: 8 },
+    { type: "halfDouble", index: 9 },
+    { type: "halfDouble", index: 10 },
+    { type: "halfDouble", index: 11 },
+    { type: "double", index: 12 },
+    { type: "double", index: 13 },
+    { type: "chain", index: 14 },
+    { type: "chain", index: 15 },
+    { type: "chain", index: 16 },
+    { type: "slip", index: 17 },
+  ],
+  [
+    { type: "inc", index: 0 },
+    { type: "inc", index: 1 },
+    { type: "inc", index: 2 },
+    { type: "inc", index: 3 },
+    { type: "inc", index: 4 },
+    { type: "inc", index: 5 },
+    { type: "inc", index: 6 },
+    { type: "inc", index: 7 },
+    { type: "inc", index: 8 },
+    { type: "inc", index: 9 },
+    { type: "inc", index: 10 },
+    { type: "inc", index: 11 },
+    { type: "inc", index: 12 },
+    { type: "inc", index: 13 },
+    { type: "inc", index: 14 },
+    { type: "inc", index: 15 },
+    { type: "inc", index: 16 },
+    { type: "inc", index: 17 },
+  ],
+];
+
 const stitches: Stitch[] = [
   // マジックリング（○）
   { type: "magicRing", x: 0, y: 0, r: 30, label: "わ" },

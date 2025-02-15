@@ -12,8 +12,9 @@ export const STITCH_TYPE_KEYS = [
 
 export type Stitch = {
   type: (typeof STITCH_TYPE_KEYS)[number];
-  x: number;
-  y: number;
+  index?: number;
+  x?: number;
+  y?: number;
   r?: number;
   label?: string;
   rotation?: number;
