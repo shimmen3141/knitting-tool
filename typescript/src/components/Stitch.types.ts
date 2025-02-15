@@ -22,6 +22,10 @@ export type Stitch = {
   relativeTo?: number;
 };
 
+export type GroupedStitch = Stitch & {
+  count?: number;
+};
+
 export type StitchShapeProps = {
   type: Stitch["type"];
   x: Stitch["x"];
