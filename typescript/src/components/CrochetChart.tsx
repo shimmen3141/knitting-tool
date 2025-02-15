@@ -30,7 +30,7 @@ const stitches: Stitch[] = [
   { type: "double", x: 30, y: 0, rotation: -90 },
   { type: "double", x: -30 / 1.414, y: 30 / 1.414, rotation: 45 },
   // 引き抜き編み（・）
-  // { type: "slip", x: 0, y: -160 },
+  { type: "slip", x: 0, y: -160 },
 ];
 
 const CrochetChart = () => {

@@ -65,6 +65,9 @@ const drawFunctions = {
     ctx.lineTo(5, 26);
   },
   // TODO:slipを追加
+  slip: (ctx: Konva.Context) => {
+    ctx.moveTo(0, 0);
+  },
 };
 
 const StitchShape = (props: StitchShapeProps) => {

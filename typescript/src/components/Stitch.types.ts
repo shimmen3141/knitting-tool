@@ -7,6 +7,7 @@ export const STITCH_TYPE_KEYS = [
   "halfDouble",
   "double",
   "treble",
+  "slip",
 ] as const;
 
 export type Stitch = {

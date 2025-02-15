@@ -11,10 +11,10 @@ export const getRotation = (list: Stitch[]) => {
       isPrevChain = true;
       return acc + 1;
     }
-    // if(cur.type === 'slip') {
-    //     isPrevChain = false;
-    //     return acc;
-    // }
+    if (cur.type === "slip") {
+      isPrevChain = false;
+      return acc;
+    }
     isPrevChain = false;
     return acc + 1;
   }, 0);
