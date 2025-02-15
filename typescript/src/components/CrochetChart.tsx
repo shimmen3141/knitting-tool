@@ -64,10 +64,6 @@ const unprocessedStitches: Stitch[][] = [
     { type: "halfDouble", index: 11 },
     { type: "double", index: 12 },
     { type: "double", index: 13 },
-    // { type: "chain", index: 14 },
-    // { type: "chain", index: 15 },
-    // { type: "chain", index: 16 },
-    // { type: "slip", index: 17 },
   ],
   [
     { type: "inc", index: 0 },
@@ -84,16 +80,10 @@ const unprocessedStitches: Stitch[][] = [
     { type: "inc", index: 11 },
     { type: "inc", index: 12 },
     { type: "inc", index: 13 },
-    // { type: "inc", index: 14 },
-    // { type: "inc", index: 15 },
-    // { type: "inc", index: 16 },
-    // { type: "inc", index: 17 },
   ],
 ];
 
-const proccesedStitches = processRounds(unprocessedStitches);
-
-console.log(proccesedStitches);
+const processedStitches = processRounds(unprocessedStitches);
 
 const stitches: Stitch[] = [
   // マジックリング（○）
@@ -144,7 +134,7 @@ const CrochetChart = () => {
   return (
     <Stage width={500} height={500} offsetX={-250} offsetY={250} scaleY={-1}>
       <Layer>
-        {proccesedStitches.map((round, roundIndex) =>
+        {processedStitches.map((round, roundIndex) =>
           round.map((stitch, stitchIndex) => (
             <StitchShape
               key={`${roundIndex}-${stitchIndex}`}
