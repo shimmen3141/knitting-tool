@@ -18,8 +18,6 @@ export const processRounds = (rounds: Stitch[][]) => {
   // relativeToを追加
   rounds = addRelations(rounds);
 
-  console.log("rounds", rounds);
-
   // 処理後の rounds を格納する配列
   const processedRounds: Stitch[][] = [];
   // magicRingを格納
@@ -73,7 +71,7 @@ export const processRounds = (rounds: Stitch[][]) => {
       const currentIndex = relativeToIndex[sourceIndex]++;
       const totalRelativeToCount = relativeToCount[sourceIndex];
 
-      const updatedeRotation =
+      const updatedRotation =
         totalRelativeToCount > 1
           ? (prevStitch.rotation ?? 0) -
             90 +
@@ -83,7 +81,7 @@ export const processRounds = (rounds: Stitch[][]) => {
       return {
         ...stitch,
         height: typeToHeight[stitch.type] || 0,
-        rotation: updatedeRotation,
+        rotation: updatedRotation,
         x:
           (prevStitch.x ?? 0) +
           ((prevStitch.height ?? 0) + MARGIN) *
@@ -99,13 +97,13 @@ export const processRounds = (rounds: Stitch[][]) => {
 };
 
 const typeToHeight: Record<string, number> = {
-  "magicRing": 30,
-  "chain": 20,
-  "inc": 20,
-  "dec": 20,
-  "single": 20,
-  "halfDouble": 30,
-  "double": 40,
-  "treble": 50,
-  "slip": 0,
+  magicRing: 30,
+  chain: 20,
+  inc: 20,
+  dec: 20,
+  single: 20,
+  halfDouble: 30,
+  double: 40,
+  treble: 50,
+  slip: 0,
 };
