@@ -82,6 +82,11 @@ const unprocessedStitches: Stitch[][] = [
     { type: "inc", index: 13 },
     { type: "inc", index: 14 },
   ],
+  [
+    { type: "double", index: 0, relativeTo: 7 },
+    { type: "double", index: 1, relativeTo: 7 },
+    { type: "double", index: 2, relativeTo: 7 },
+  ],
 ];
 
 const processedStitches = processRounds(unprocessedStitches);
